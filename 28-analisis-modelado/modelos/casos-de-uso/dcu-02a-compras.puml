@@ -1,0 +1,34 @@
+@startuml
+' DCU-02a · Vista «Compras: solicitud y decisión» · v1.1 · 16/11/2026
+title DCU-02a · Vista «Compras: solicitud y decisión» · v1.1
+left to right direction
+
+actor "Residente\nde obra" as RE
+actor "Aprobador" as AP
+actor "Administradora\nde proyectos" as AD
+actor "Gerente\nde obra" as GO
+actor "Gerente\ngeneral" as GG
+
+AD --|> AP
+GO --|> AP
+GG --|> AP
+
+rectangle "Sistema de información para la gestión de obras — CIA Ingeniería" {
+  usecase "CU-01\nSolicitar compra\nde insumos" as CU01
+  usecase "CU-02\nDecidir solicitud\nde compra" as CU02
+  usecase "CU-19\nAnular solicitud\nde compra" as CU19
+  usecase "CU-05\nCalcular saldo\ndel rubro" as CU05
+}
+
+RE -- CU01
+RE -- CU19
+AP -- CU02
+CU01 ..> CU05 : <<include>>
+CU02 ..> CU05 : <<include>>
+
+legend bottom
+  «Aprobador» es el rol que decide una solicitud. Lo cumple la administradora de proyectos,
+  el gerente de obra o el gerente general, según la ruta de aprobación (RN-02 a RN-05, RN-19).
+  CU-05 es una subfunción: siempre ocurre dentro de CU-01 y CU-02 y no tiene actor propio.
+endlegend
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+' DAC-02 · Comprar un insumo para la obra con el sistema (TO-BE) · v1.1 · 16/11/2026
+title DAC-02 · Comprar un insumo para la obra con el sistema (TO-BE) · v1.1
+|Residente de obra|
+start
+repeat
+  :Registra la solicitud\nde compra (CU-01);
+  |Sistema|
+  :Valida los datos\nde la solicitud;
+repeat while (¿Datos completos?) is ([no]) not ([sí])
+:Calcula el saldo\ndel rubro (CU-05);
+:Determina la ruta\nde aprobación;
+repeat
+  |Sistema|
+  :Notifica al aprobador\nque sigue en la ruta;
+  |Aprobador|
+  :Revisa la solicitud con\nel saldo del rubro (CU-02);
+  if (¿Aprueba la solicitud?) then ([no])
+    |Sistema|
+    :Registra el rechazo\ncon su motivo;
+    :Notifica el rechazo\nal residente;
+    stop
+  else ([sí])
+  endif
+  |Sistema|
+  :Registra la aprobación;
+repeat while (¿Falta otro aprobador\nde la ruta?) is ([sí]) not ([no])
+:Suma el valor de la solicitud\nal gasto acumulado;
+:Notifica la aprobación\nal residente;
+|Administradora de proyectos|
+:Registra la orden\nde compra (CU-20);
+|Residente de obra|
+:Registra la recepción\ndel material (CU-13);
+:Adjunta el soporte\nde la compra (CU-13);
+|Administradora de proyectos|
+:Verifica la compra contra cotización,\norden y soporte (CU-15);
+|Contador|
+:Consulta la compra\nverificada (CU-18);
+:Gestiona el pago;
+stop
+@enduml

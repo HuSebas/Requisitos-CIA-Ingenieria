@@ -1,0 +1,39 @@
+@startuml
+' DCU-01 · Contexto del sistema (nivel resumen) · v1.1 · 16/11/2026
+title DCU-01 · Contexto del sistema (nivel resumen) · v1.1
+left to right direction
+
+actor "Residente\nde obra" as RE
+actor "Administradora\nde proyectos" as AD
+actor "Gerente\nde obra" as GO
+actor "Gerente\ngeneral" as GG
+actor "Contador" as CO
+
+rectangle "Sistema de información para la gestión de obras — CIA Ingeniería" {
+  usecase "Gestionar las compras\nde insumos\n(CU-01 a CU-05, CU-15,\nCU-18 a CU-20)" as M2
+  usecase "Controlar el presupuesto\ny los costos de la obra\n(CU-06 a CU-08, CU-16, CU-17)" as M1
+  usecase "Reportar el avance\nde la obra\n(CU-09 a CU-12)" as M3
+  usecase "Validar la recepción\nde materiales\n(CU-13, CU-14)" as M4
+}
+
+RE -- M2
+RE -- M3
+RE -- M4
+AD -- M2
+AD -- M1
+AD -- M3
+GO -- M2
+GO -- M1
+GO -- M3
+GG -- M2
+GG -- M1
+GG -- M3
+CO -- M2
+
+legend bottom
+  Reglas transversales (no son casos de uso): traza de todo cambio (RF-034, RF-035)
+  y acceso por rol al presupuesto (RF-036, RF-037).
+  Fuera del modelo (acta de constitución): contratación y presupuestación inicial,
+  inventario de maquinaria y herramienta, SST y calidad, nómina.
+endlegend
+@enduml

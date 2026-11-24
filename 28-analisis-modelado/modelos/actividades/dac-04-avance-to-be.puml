@@ -1,0 +1,23 @@
+@startuml
+' DAC-04 · Reportar el avance de un corte con el sistema (TO-BE) · v1.0 · 15/11/2026
+title DAC-04 · Reportar el avance de un corte con el sistema (TO-BE) · v1.0
+|Residente de obra|
+start
+repeat
+  |Residente de obra|
+  :Registra o corrige el avance del corte\ncon fotografía (CU-09);
+  |Sistema|
+  :Guarda el reporte\nen el dispositivo;
+  while (¿Hay conexión?) is ([no])
+    :Mantiene el reporte pendiente\nde sincronizar;
+  endwhile ([sí])
+  :Sincroniza el reporte;
+  :Actualiza el avance\nde la obra;
+  |Gerente de obra|
+  :Consulta el avance\nde la obra (CU-10);
+  backward :Devuelve el reporte\ncon su motivo (CU-11);
+repeat while (¿El reporte es consistente?) is ([no]) not ([sí])
+|Sistema|
+:Actualiza los consolidados\nde la obra;
+stop
+@enduml
