@@ -1,0 +1,25 @@
+@startuml
+' DSE-01 · CU-01 Solicitar compra de insumos · principal y extensiones · nivel 1 · v1.0 · 16/11/2026
+title DSE-01 · CU-01 Solicitar compra de insumos · principal y extensiones · nivel 1 · v1.0
+hide footbox
+actor "Residente\nde obra" as RE
+participant "Sistema" as S
+actor "Aprobador" as AP
+
+RE -> S : registrar solicitud de compra\n(obra, rubro, insumo, cantidad,\nvalor estimado, fecha requerida)
+break 2a · falta un dato o el rubro no es de la obra
+  S --> RE : dato que falta
+end
+S -> S : calcular saldo del rubro (CU-05)
+opt 3a · el valor estimado supera el saldo
+  S -> S : marcar el exceso en la solicitud
+end
+S -> S : determinar ruta de aprobación\n(RN-02 a RN-05)
+S -> S : registrar solicitud «pendiente»
+S ->> AP : notificar solicitud pendiente
+S --> RE : solicitud registrada\ny ruta de aprobación
+note over AP
+  Recibe la notificación el primer
+  aprobador de la ruta.
+end note
+@enduml

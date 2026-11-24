@@ -1,0 +1,24 @@
+@startuml
+' DSE-04 · CU-09 Registrar avance de obra · principal y extensiones · nivel 1 · v1.0 · 15/11/2026
+title DSE-04 · CU-09 Registrar avance de obra · principal y extensiones · nivel 1 · v1.0
+hide footbox
+actor "Residente\nde obra" as RE
+participant "Sistema" as S
+
+RE -> S : registrar avance del corte\n(avance y fotografía por actividad)
+break 1a · el corte ya tiene un reporte vigente no devuelto
+  S --> RE : corte con reporte vigente
+end
+break 2a · avance fuera de rango o sin fotografía
+  S --> RE : actividad y dato por corregir
+end
+S -> S : guardar reporte\n«pendiente de sincronizar»
+S --> RE : reporte guardado en el dispositivo
+loop 4a · mientras no haya conexión
+  S -> S : mantener reporte pendiente
+end
+S -> S : sincronizar reporte
+S -> S : registrar reporte «registrado»
+S -> S : actualizar avance de la obra
+S ->> RE : confirmar reporte registrado
+@enduml

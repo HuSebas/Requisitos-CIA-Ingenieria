@@ -1,0 +1,36 @@
+@startuml
+' DCU-02b · Vista «Presupuesto y costos» · v1.0 · 15/11/2026
+title DCU-02b · Vista «Presupuesto y costos» · v1.0
+left to right direction
+
+actor "Gerente\nde obra" as GO
+actor "Administradora\nde proyectos" as AD
+actor "Gerente\ngeneral" as GG
+
+rectangle "Sistema de información para la gestión de obras — CIA Ingeniería" {
+  usecase "CU-06\nRegistrar presupuesto\nde la obra" as CU06
+  usecase "CU-16\nAjustar presupuesto\nde la obra" as CU16
+  usecase "CU-07\nConsultar presupuesto\ny ejecución de la obra" as CU07
+  usecase "CU-17\nGenerar consolidado\nde la obra" as CU17
+  usecase "CU-08\nAlertar rubro cercano\na su límite" as CU08
+  usecase "CU-05\nCalcular saldo\ndel rubro" as CU05
+}
+
+GO -- CU06
+GO -- CU16
+GG -- CU16
+GO -- CU07
+AD -- CU07
+GG -- CU07
+AD -- CU17
+CU08 -- GO
+CU08 -- AD
+CU07 ..> CU05 : <<include>>
+
+legend bottom
+  CU-08 no lo inicia una persona: lo dispara el evento «el gasto acumulado de un rubro
+  alcanza el umbral de alerta» (RN-11). El gerente de obra y la administradora la reciben.
+  CU-16: el gerente de obra registra el ajuste y el gerente general lo aprueba (PD-11).
+  La presupuestación inicial de la obra está fuera del modelo (acta de constitución).
+endlegend
+@enduml

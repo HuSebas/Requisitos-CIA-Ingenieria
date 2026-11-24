@@ -1,0 +1,43 @@
+@startuml
+' DSE-02 · CU-02 Decidir solicitud de compra · principal y extensiones · nivel 1 · v1.0 · 16/11/2026
+title DSE-02 · CU-02 Decidir solicitud de compra · principal y extensiones · nivel 1 · v1.0
+hide footbox
+actor "Aprobador" as AP
+participant "Sistema" as S
+actor "Residente\nde obra" as RE
+actor "siguiente : Aprobador" as AP2
+
+AP -> S : abrir solicitud pendiente
+S -> S : calcular saldo del rubro (CU-05)
+S --> AP : solicitud, valor solicitado\ny saldo disponible
+opt 2a · el saldo es menor que el valor solicitado
+  S --> AP : valor del exceso
+end
+alt principal · el aprobador aprueba
+  AP -> S : aprobar solicitud
+  break 3b · la ruta que corresponde al saldo vigente no es la asignada
+    S -> S : reasignar ruta de aprobación
+    S ->> AP2 : notificar solicitud pendiente
+    S --> AP : ruta reasignada
+  end
+  S -> S : registrar decisión\n(aprobador, fecha, saldo vigente)
+  break 4a · falta la decisión de otro aprobador de la ruta
+    S ->> AP2 : notificar solicitud pendiente
+    S --> AP : aprobación registrada,\nsolicitud aún pendiente
+  end
+  S -> S : dejar solicitud «aprobada»
+  S -> S : sumar valor al gasto acumulado
+  S ->> RE : notificar aprobación
+  S --> AP : solicitud aprobada
+else 3a · el aprobador rechaza
+  AP -> S : rechazar solicitud (motivo)
+  S -> S : registrar decisión\n(aprobador, fecha, motivo)
+  S -> S : dejar solicitud «rechazada»
+  S ->> RE : notificar rechazo
+  S --> AP : solicitud rechazada
+end
+note over S
+  5a no se dibuja: la alerta del rubro
+  es el caso de uso CU-08.
+end note
+@enduml
