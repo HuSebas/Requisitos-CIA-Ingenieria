@@ -1,0 +1,22 @@
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Archivos temporales de Office
+~$*
+*.tmp
+
+# Dependencias y logs
+node_modules/
+*.log
+.env
+
+# Archivos privados o temporales de organización (no subir a GitHub)
+_POR-ELIMINAR/
+_RESPALDO-MODIFICADOS/
+autoevaluacion-coevaluacion.*
