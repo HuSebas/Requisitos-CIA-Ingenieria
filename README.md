@@ -11,7 +11,7 @@ Asignatura Ingeniería de Requisitos — Ingeniería de Sistemas y Computación,
 | Paola Andrea Camacho González | `paola044` |
 | Sebastián Felipe Huertas Salas | `HuSebas` |
 | Juan Miguel Blanco Perilla | `miguelbpj13` |
-| Jhonnyd Bleyck Arias Santafé | jhonnydArias |
+| Jhonnyd Bleyck Arias Santafe | `jhonnydArias` |
 
 Estructura
 
