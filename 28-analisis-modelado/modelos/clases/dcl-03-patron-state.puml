@@ -1,0 +1,39 @@
+@startuml
+' DCL-03 · Patrón State aplicado a la solicitud de compra · v1.0 · 16/11/2026
+title DCL-03 · Patrón State aplicado a la solicitud de compra · v1.0
+skinparam classAttributeIconSize 0
+
+class SolicitudCompra {
+  - estado : EstadoSolicitud
+  + aprobar(aprobador)
+  + rechazar(aprobador, motivo)
+  + anular(solicitante, motivo)
+  ~ cambiarEstado(nuevo)
+}
+interface EstadoSolicitud {
+  + aprobar(solicitud, aprobador)
+  + rechazar(solicitud, aprobador, motivo)
+  + anular(solicitud, solicitante, motivo)
+  + nombre() : String
+}
+class Pendiente
+class Aprobada
+class Rechazada
+class Anulada
+class RegistroCambio
+
+SolicitudCompra "1" o-- "1" EstadoSolicitud : estado actual
+EstadoSolicitud <|.. Pendiente
+EstadoSolicitud <|.. Aprobada
+EstadoSolicitud <|.. Rechazada
+EstadoSolicitud <|.. Anulada
+Pendiente ..> Aprobada : crea
+Pendiente ..> Rechazada : crea
+Pendiente ..> Anulada : crea
+SolicitudCompra ..> RegistroCambio : escribe
+
+legend bottom
+  Solo Pendiente implementa las transiciones T-02 a T-06 de DES-01.
+  Aprobada, Rechazada y Anulada rechazan toda operación: son estados finales.
+endlegend
+@enduml

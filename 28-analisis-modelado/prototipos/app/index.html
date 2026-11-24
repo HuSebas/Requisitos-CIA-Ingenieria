@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestión de obras · Prototipo</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <header class="barra">
+    <button id="atras" class="icono" type="button" aria-label="Volver" hidden>‹</button>
+    <div class="barra-titulo">
+      <strong id="titulo">Gestión de obras</strong>
+      <span id="subtitulo"></span>
+    </div>
+    <button id="conexion" class="chip" type="button" aria-pressed="true" hidden>Con conexión</button>
+    <button id="salir" class="enlace" type="button" hidden>Salir</button>
+  </header>
+  <div id="aviso" class="aviso" role="status" aria-live="polite"></div>
+  <main id="contenido" tabindex="-1"></main>
+  <footer class="pie">Prototipo con datos de ejemplo. Al recargar la página los datos vuelven al inicio.</footer>
+  <script src="datos.js"></script>
+  <script src="mensajes.js"></script>
+  <script src="reglas.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

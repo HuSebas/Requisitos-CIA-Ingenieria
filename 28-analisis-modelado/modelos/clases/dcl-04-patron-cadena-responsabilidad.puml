@@ -1,0 +1,40 @@
+@startuml
+' DCL-04 · Patrón Cadena de responsabilidad aplicado a la ruta de aprobación · v1.0 · 16/11/2026
+title DCL-04 · Patrón Cadena de responsabilidad aplicado a la ruta de aprobación · v1.0
+skinparam classAttributeIconSize 0
+
+class AsignadorDeRuta {
+  + determinar(solicitud) : Ruta
+}
+abstract class NivelDeAprobacion {
+  - siguiente : NivelDeAprobacion
+  + resolver(solicitud) : Ruta
+  # {abstract} leCorresponde(solicitud) : boolean
+  # {abstract} ruta(solicitud) : Ruta
+}
+class DentroDelSaldo
+class ExcesoEnImprevistos
+class ExcesoSobreImprevistos
+class Ruta {
+  aprobadores : lista ordenada
+}
+class SolicitudCompra
+interface ConsultaDeSaldos {
+  + saldoDelRubro(rubro)
+  + saldoDeImprevistos(obra)
+}
+
+AsignadorDeRuta --> NivelDeAprobacion : primer nivel
+NivelDeAprobacion "0..1" o-- "0..1" NivelDeAprobacion : siguiente
+NivelDeAprobacion <|-- DentroDelSaldo
+NivelDeAprobacion <|-- ExcesoEnImprevistos
+NivelDeAprobacion <|-- ExcesoSobreImprevistos
+NivelDeAprobacion ..> ConsultaDeSaldos : usa
+NivelDeAprobacion ..> SolicitudCompra : evalúa
+NivelDeAprobacion ..> Ruta : produce
+
+legend bottom
+  DentroDelSaldo = RN-02 y RN-03 · ExcesoEnImprevistos = RN-04 · ExcesoSobreImprevistos = RN-05.
+  Cada nivel responde si le corresponde la solicitud; si no, la pasa al siguiente.
+endlegend
+@enduml

@@ -1,0 +1,44 @@
+@startuml
+' NAV-01 · Mapa de navegación por rol · v1.0 · 16/11/2026
+title NAV-01 · Mapa de navegación por rol · v1.0
+hide empty description
+skinparam state {
+  BackgroundColor<<residente>> #E3F3E9
+  BackgroundColor<<aprobador>> #FFF4D6
+  BackgroundColor<<todos>> #EEF3FA
+}
+state "P-01 Ingreso" as P01 <<todos>>
+state "P-02 Inicio" as P02 <<todos>>
+state "P-03 Solicitar una compra" as P03 <<residente>>
+state "P-04 Mis registros" as P04 <<residente>>
+state "P-07 Registrar compra urgente" as P07 <<residente>>
+state "P-09 Registrar avance del corte" as P09 <<residente>>
+state "P-05 Por decidir" as P05 <<aprobador>>
+state "P-06 Decidir una solicitud" as P06 <<aprobador>>
+state "P-08 Legalizar compra urgente" as P08 <<aprobador>>
+state "P-11 Avance de la obra" as P11 <<aprobador>>
+state "P-10 Presupuesto y ejecución\no saldos de los rubros" as P10 <<todos>>
+
+[*] --> P01
+P01 --> P02 : elegir rol
+P02 --> P03
+P02 --> P07
+P02 --> P09
+P02 --> P04
+P03 --> P04 : enviada
+P07 --> P04 : registrada
+P09 --> P04 : guardado
+P02 --> P05
+P05 --> P06 : abrir solicitud
+P05 --> P08 : abrir compra urgente
+P06 --> P05 : decidida
+P08 --> P05 : legalizada o devuelta
+P02 --> P11
+P02 --> P10
+P02 --> P01 : salir
+
+legend bottom
+  Verde: solo el residente de obra. Amarillo: administradora, gerente de obra y gerente general.
+  Azul: todos los roles. El contador solo llega a P-10. Desde cualquier pantalla, «‹» vuelve a P-02.
+endlegend
+@enduml

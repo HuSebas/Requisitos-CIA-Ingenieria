@@ -1,0 +1,100 @@
+@startuml
+' DCL-01 · Modelo de dominio: presupuesto y compras · v1.0 · 16/11/2026
+title DCL-01 · Modelo de dominio: presupuesto y compras · v1.0
+hide circle
+hide methods
+skinparam classAttributeIconSize 0
+
+class Obra {
+  nombre
+  periodicidadCorte
+}
+class Presupuesto {
+  version
+  fechaAprobacion
+  vigente
+}
+class Rubro {
+  nombre
+  valorPresupuestado
+  esImprevistos
+  /gastoAcumulado
+  /saldo
+}
+class Actividad {
+  nombre
+  unidad
+  cantidadPlaneada
+}
+abstract class Compra {
+  valor
+  descripcion
+  fechaRegistro
+  verificada
+}
+class SolicitudCompra {
+  insumo
+  cantidad
+  fechaRequerida
+  estado : EstadoSolicitud
+}
+class CompraUrgente {
+  sobreTope
+  estado : EstadoCompraUrgente
+}
+class Decision {
+  resultado
+  fecha
+  saldoVigente
+  motivoUObservacion
+}
+class Soporte {
+  tipo
+  archivo
+}
+class Usuario {
+  nombre
+}
+class Asignacion {
+  rol
+}
+class RegistroCambio {
+  fecha
+  valorAnterior
+}
+enum EstadoSolicitud {
+  Pendiente
+  Aprobada
+  Rechazada
+  Anulada
+}
+enum EstadoCompraUrgente {
+  Por legalizar
+  Legalizada
+}
+
+Obra "1" *-- "1..*" Presupuesto
+Presupuesto "1" *-- "1..*" Rubro
+Obra "1" *-- "1..*" Actividad
+Rubro "0..*" -- "0..1" Actividad
+Compra <|-- SolicitudCompra
+Compra <|-- CompraUrgente
+Compra "0..*" -- "1" Rubro : se imputa a
+Compra "1" *-- "0..*" Soporte
+Compra "0..*" -- "1" Usuario : registra
+Compra "1" *-- "0..*" Decision
+Compra "0..*" -- "1..2" Usuario : ruta de aprobación
+Decision "0..*" -- "1" Usuario : toma
+Obra "0..*" o-- "1..*" Usuario
+(Obra, Usuario) .. Asignacion
+RegistroCambio "0..*" -- "1" Usuario : origina
+SolicitudCompra ..> EstadoSolicitud
+CompraUrgente ..> EstadoCompraUrgente
+
+legend bottom
+  Solo un Presupuesto por Obra está vigente (G5.4, RF-018). saldo = valorPresupuestado − gastoAcumulado (RN-01).
+  Asignacion guarda el rol de cada Usuario en cada Obra: uno solo por obra (RF-036).
+  Decision guarda cada aprobación, rechazo, legalización o devolución con observación (RN-19).
+  Todo cambio en Presupuesto, Compra y ReporteAvance escribe un RegistroCambio (RF-034).
+endlegend
+@enduml

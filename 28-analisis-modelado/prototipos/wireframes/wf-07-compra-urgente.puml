@@ -1,0 +1,19 @@
+@startsalt
+title WF-07 · Registrar una compra urgente (P-07) · v1.0
+{+
+  {* ‹ | <b>Compra urgente | [Con conexión] | Salir }
+  ==
+  { Para compras que ya hizo con caja menor.  (1) }
+  { <b>Rubro  (2) }
+  { ^Elija un rubro            ^ }
+  { <b>Valor pagado, en pesos  (3) }
+  { "                            " }
+  { Aviso si supera el tope de caja menor  (4) }
+  { <b>Qué compró (opcional)  (5) }
+  { "                            " }
+  { <b>Foto de la factura  (6) }
+  { [Tomar o elegir foto] | Nombre del archivo }
+  --
+  { [       Registrar compra  (7)       ] }
+}
+@endsalt

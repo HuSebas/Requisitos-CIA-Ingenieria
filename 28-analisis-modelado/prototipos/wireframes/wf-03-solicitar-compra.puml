@@ -1,0 +1,24 @@
+@startsalt
+title WF-03 · Solicitar una compra (P-03) · v1.0
+{+
+  {* ‹ | <b>Solicitar una compra | [Con conexión] | Salir }
+  ==
+  { <b>Rubro  (1) }
+  { ^Elija un rubro            ^ }
+  { <b>Insumo  (2) }
+  { "                            " }
+  { <b>Cantidad  (3) }
+  { Con su unidad. Por ejemplo: 50 bultos. }
+  { "                            " }
+  { <b>Valor estimado, en pesos  (4) }
+  { "                            " }
+  { <b>Fecha en que lo necesita  (5) }
+  { "dd/mm/aaaa                  " }
+  --
+  {+
+    Saldo del rubro | <b>$ 0.000.000  (6)
+    La decide | <b>Ruta de aprobación  (7)
+  }
+  { [       Enviar solicitud  (8)       ] }
+}
+@endsalt
