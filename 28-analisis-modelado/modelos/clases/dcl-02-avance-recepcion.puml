@@ -1,0 +1,82 @@
+@startuml
+' DCL-02 · Modelo de dominio: avance y recepción · v1.0 · 15/11/2026
+title DCL-02 · Modelo de dominio: avance y recepción · v1.0
+hide circle
+hide methods
+skinparam classAttributeIconSize 0
+
+class Obra {
+  nombre
+  periodicidadCorte
+}
+class Actividad {
+  nombre
+  unidad
+  cantidadPlaneada
+}
+class Corte {
+  fecha
+}
+class ReporteAvance {
+  version
+  vigente
+  motivoDevolucion
+  estado : EstadoReporte
+}
+class AvanceActividad {
+  cantidadEjecutada
+  porcentaje
+  fotografia
+}
+class SolicitudCompra {
+  insumo
+  cantidad
+}
+class OrdenCompra {
+  numero
+  proveedor
+  fecha
+}
+class Recepcion {
+  fecha
+  cantidadRecibida
+  estadoMaterial
+  conNovedad
+}
+class Devolucion {
+  material
+  cantidad
+  motivo
+  valor
+}
+class Rubro {
+  nombre
+}
+class Usuario {
+  nombre
+}
+enum EstadoReporte {
+  Pendiente de sincronizar
+  Registrado
+  Devuelto
+}
+
+Obra "1" *-- "1..*" Actividad
+Obra "1" *-- "0..*" Corte
+Corte "1" *-- "1..*" ReporteAvance
+ReporteAvance "1" *-- "1..*" AvanceActividad
+AvanceActividad "0..*" -- "1" Actividad : mide
+ReporteAvance "0..*" -- "1" Usuario : registra
+SolicitudCompra "1" -- "0..1" OrdenCompra : origina
+OrdenCompra "1" -- "0..*" Recepcion
+OrdenCompra "1" -- "0..*" Devolucion
+Recepcion "0..*" -- "1" Usuario : registra
+Devolucion "0..*" -- "1" Rubro : resta del gasto de
+ReporteAvance ..> EstadoReporte
+
+legend bottom
+  Un Corte tiene un solo ReporteAvance vigente; cada corrección crea una versión nueva (RN-14).
+  porcentaje está entre 0 y 100 (RN-13). conNovedad se calcula con RN-15.
+  El valor de una Devolucion se resta del gasto acumulado de su Rubro (RN-12).
+endlegend
+@enduml

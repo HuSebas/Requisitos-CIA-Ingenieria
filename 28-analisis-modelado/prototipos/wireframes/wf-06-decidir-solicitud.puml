@@ -1,0 +1,26 @@
+@startsalt
+title WF-06 · Decidir una solicitud (P-06) · v1.0
+{+
+  {* ‹ | <b>Solicitud S-000 | Salir }
+  ==
+  {+
+    Insumo | <b>Texto
+    Cantidad | <b>Texto
+    Rubro | <b>Texto
+    La necesita el | <b>dd/mm/aaaa
+    Ruta de aprobación | <b>Uno o dos aprobadores  (1)
+  }
+  {+
+    Valor solicitado | <b>$ 0.000.000  (2)
+    Saldo del rubro hoy | <b>$ 0.000.000  (3)
+    Aviso de exceso, si lo hay  (4) | .
+  }
+  { <b>Decisiones anteriores  (5) }
+  {+ Rol · fecha | Resultado }
+  { <b>Motivo  (6) }
+  { Obligatorio si rechaza. }
+  {+ "                              " }
+  { [          Aprobar  (7)          ] }
+  { [          Rechazar  (8)         ] }
+}
+@endsalt

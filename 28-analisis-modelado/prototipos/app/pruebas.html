@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestión de obras · Autopruebas de las reglas</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="barra"><div class="barra-titulo"><strong>Autopruebas de las reglas</strong><span id="resumen"></span></div></header>
+  <main id="contenido">
+    <table class="tabla"><thead><tr><th>ID</th><th>Regla</th><th>Qué comprueba</th><th>Resultado</th></tr></thead><tbody id="filas"></tbody></table>
+  </main>
+  <script src="datos.js"></script>
+  <script src="reglas.js"></script>
+  <script src="pruebas.js"></script>
+  <script>
+    var res = Pruebas.ejecutar(), pasan = res.filter(function (r) { return r.ok; }).length;
+    document.getElementById("resumen").textContent = pasan + " de " + res.length + " pruebas pasan";
+    document.getElementById("filas").innerHTML = res.map(function (r) {
+      return "<tr><td>" + r.id + "</td><td>" + r.regla + "</td><td>" + r.nombre + "</td><td class='" + (r.ok ? "bien" : "mal") + "'>" + (r.ok ? "Pasa" : "Falla") + "</td></tr>";
+    }).join("");
+  </script>
+</body>
+</html>
