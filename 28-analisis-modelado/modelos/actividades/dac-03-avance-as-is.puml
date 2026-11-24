@@ -1,0 +1,27 @@
+@startuml
+' DAC-03 · Reportar el avance de un corte hoy (AS-IS) · v1.0 · 15/11/2026
+title DAC-03 · Reportar el avance de un corte hoy (AS-IS) · v1.0
+|Residente de obra|
+start
+:Anota el avance a mano\nen el frente de obra;
+:Toma fotografías\ndel avance;
+repeat
+  |Residente de obra|
+  :Digita o corrige el avance en Excel\nal final de la jornada;
+  note right #FFD9D2: PA-08
+  while (¿Hay señal?) is ([no])
+    :Espera a tener señal;
+    note right #FFD9D2: PA-09
+  endwhile ([sí])
+  :Envía el reporte por correo\no WhatsApp;
+  |Gerente de obra|
+  :Contrasta el reporte con\nlo que vio en obra;
+  backward :Devuelve el reporte\npor llamada;
+repeat while (¿El reporte es consistente?) is ([no]) not ([sí])
+note right #FFD9D2: PA-10
+|Administradora de proyectos|
+:Actualiza el consolidado\nen Excel;
+note right #FFD9D2: PA-07
+:Verifica los registros\nque usaron el reporte;
+stop
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+' DCU-02e · Vista «Compras: urgentes, orden y verificación» · v1.1 · 16/11/2026
+title DCU-02e · Vista «Compras: urgentes, orden y verificación» · v1.1
+left to right direction
+
+actor "Residente\nde obra" as RE
+actor "Aprobador" as AP
+actor "Administradora\nde proyectos" as AD
+actor "Contador" as CO
+
+rectangle "Sistema de información para la gestión de obras — CIA Ingeniería" {
+  usecase "CU-03\nRegistrar\ncompra urgente" as CU03
+  usecase "CU-04\nLegalizar\ncompra urgente" as CU04
+  usecase "CU-20\nRegistrar orden\nde compra" as CU20
+  usecase "CU-15\nVerificar\ncompra" as CU15
+  usecase "CU-18\nConsultar compras\nverificadas" as CU18
+  usecase "CU-05\nCalcular saldo\ndel rubro" as CU05
+}
+
+RE -- CU03
+AP -- CU04
+AD -- CU20
+AD -- CU15
+CO -- CU18
+CU03 ..> CU05 : <<include>>
+
+legend bottom
+  «Aprobador» se define en DCU-02a. Legaliza quien habría decidido una solicitud
+  normal de ese valor (PD-08).
+  CU-20 ocurre después de aprobada la solicitud (CU-02) y antes de la recepción (CU-13).
+  El contador consulta, pero no decide solicitudes (PD-10).
+endlegend
+@enduml

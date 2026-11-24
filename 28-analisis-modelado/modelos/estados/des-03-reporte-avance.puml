@@ -1,0 +1,19 @@
+@startuml
+' DES-03 · Ciclo de vida del reporte de avance · v1.0 · 16/11/2026
+title DES-03 · Ciclo de vida del reporte de avance · v1.0
+hide empty description
+
+state "Pendiente de sincronizar" as PS
+state "Registrado" as RG
+state "Devuelto" as DV
+
+[*] --> PS : T-10 registrar avance del corte\n[avance válido y con fotografía] (CU-09)
+PS --> RG : T-11 sincronizar\n[hay conexión]\n/ actualizar avance de la obra (CU-09)
+RG --> DV : T-12 devolver\n[con motivo]\n/ notificar al residente (CU-11)
+DV --> PS : T-13 corregir avance\n/ crear versión nueva y conservar la anterior (CU-09)
+
+legend bottom
+  No hay estado final: un reporte «Registrado» permanece así salvo que el gerente de obra lo devuelva.
+  T-11 la produce el sistema al detectar conexión; si no hay, el reporte sigue «Pendiente de sincronizar».
+endlegend
+@enduml

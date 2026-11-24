@@ -1,0 +1,52 @@
+@startuml
+' DAC-01 · Comprar un insumo para la obra hoy (AS-IS) · v1.0 · 15/11/2026
+title DAC-01 · Comprar un insumo para la obra hoy (AS-IS) · v1.0
+|Residente de obra|
+start
+:Identifica la necesidad\nde un insumo;
+:Pide el insumo por llamada\no WhatsApp;
+note right #FFD9D2: PA-01
+|Administradora de proyectos|
+:Revisa cotizaciones y el presupuesto\nde referencia en Excel;
+note right #FFD9D2: PA-02
+if (¿El valor cabe\nen el rubro?) then ([sí])
+  if (¿La compra es grande\no cambia lo planeado?) then ([sí])
+    |Gerente de obra|
+    :Da el visto bueno técnico\npor llamada;
+    note right #FFD9D2: PA-03
+  else ([no])
+  endif
+else ([no])
+  if (¿El exceso cabe\nen imprevistos?) then ([sí])
+    |Gerente de obra|
+    :Aprueba el exceso\njunto con administración;
+  else ([no])
+    |Gerente general|
+    :Autoriza el exceso;
+  endif
+endif
+|Residente de obra|
+if (¿La respuesta llega antes\nde la fecha requerida?) then ([sí])
+  |Administradora de proyectos|
+  :Emite la orden de compra;
+  |Residente de obra|
+  :Recibe el material\nen el frente de obra;
+  if (¿Llega completo\ny en buen estado?) then ([no])
+    :Reclama de palabra\nal proveedor;
+    note right #FFD9D2: PA-05
+  else ([sí])
+  endif
+else ([no])
+  :Compra el insumo\ncon caja menor;
+  note right #FFD9D2: PA-04
+endif
+:Envía la foto de la factura;
+note right #FFD9D2: PA-06
+|Administradora de proyectos|
+:Verifica el soporte contra\nla cotización y la orden;
+:Registra la compra en\nel Excel consolidado;
+note right #FFD9D2: PA-07
+|Contador|
+:Gestiona el pago;
+stop
+@enduml

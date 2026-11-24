@@ -1,0 +1,18 @@
+@startuml
+' DES-02 · Ciclo de vida de la compra urgente · v1.0 · 16/11/2026
+title DES-02 · Ciclo de vida de la compra urgente · v1.0
+hide empty description
+
+state "Por legalizar" as PL
+state "Legalizada" as LE
+
+[*] --> PL : T-07 registrar compra urgente\n[con rubro, valor y soporte]\n/ sumar valor al gasto acumulado (CU-03)
+PL --> PL : T-08 devolver con observación\n/ notificar al residente (CU-04)
+PL --> LE : T-09 legalizar\n/ registrar aprobador y fecha (CU-04)
+LE --> [*]
+
+legend bottom
+  El valor se suma al gasto acumulado solo en T-07; T-09 no lo modifica (RN-07).
+  «Sobre el tope» y «plazo de legalización vencido» son marcas de la compra, no estados.
+endlegend
+@enduml

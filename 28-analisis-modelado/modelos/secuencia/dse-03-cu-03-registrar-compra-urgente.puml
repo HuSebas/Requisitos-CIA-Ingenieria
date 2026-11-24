@@ -1,0 +1,25 @@
+@startuml
+' DSE-03 · CU-03 Registrar compra urgente · principal y extensiones · nivel 1 · v1.0 · 15/11/2026
+title DSE-03 · CU-03 Registrar compra urgente · principal y extensiones · nivel 1 · v1.0
+hide footbox
+actor "Residente\nde obra" as RE
+participant "Sistema" as S
+actor "Aprobador" as AP
+
+RE -> S : registrar compra urgente\n(rubro, valor, descripción, soporte)
+break 2a · falta el rubro, el valor o el soporte
+  S --> RE : dato que falta
+end
+opt 2b · el valor supera el tope de caja menor
+  S -> S : marcar la compra «sobre el tope»
+end
+S -> S : sumar valor al gasto acumulado
+S -> S : registrar compra «por legalizar»
+S ->> AP : notificar compra por legalizar
+S -> S : calcular saldo del rubro (CU-05)
+S --> RE : compra registrada\ny saldo resultante
+note right of S
+  [5a] El saldo puede quedar negativo:
+  se muestra tal cual (RN-07).
+end note
+@enduml

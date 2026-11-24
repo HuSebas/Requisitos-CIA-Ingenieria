@@ -1,0 +1,22 @@
+@startuml
+' DAC-05 · Hacer una compra urgente con el sistema (TO-BE) · v1.0 · 15/11/2026
+title DAC-05 · Hacer una compra urgente con el sistema (TO-BE) · v1.0
+|Residente de obra|
+start
+:Compra el insumo\ncon caja menor;
+:Fotografía la factura;
+repeat
+  :Registra la compra urgente\ncon rubro, valor y foto (CU-03);
+  |Sistema|
+  :Valida el rubro, el valor\ny el soporte;
+repeat while (¿Datos completos?) is ([no]) not ([sí])
+:Suma el valor al gasto\nacumulado del rubro;
+:Deja la compra\n«por legalizar»;
+|Aprobador|
+:Legaliza la compra\nurgente (CU-04);
+|Sistema|
+:Cambia el estado de la compra\na «legalizada»;
+|Administradora de proyectos|
+:Verifica la compra contra\nel soporte (CU-15);
+stop
+@enduml
