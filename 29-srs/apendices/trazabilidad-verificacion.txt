@@ -1,0 +1,10 @@
+Matriz: 29-srs/apendices/trazabilidad.csv
+Requisitos: 58 · con la cadena mínima completa (fuente, necesidad, AC, verificación): 58 (100 %)
+Must con cadena completa: 31 de 31
+
+ERRORES (0)
+
+AVISOS (3)
+  - RF-034 (fila 35): ningún caso de uso ni historia lo respalda.
+  - RF-035 (fila 36): ningún caso de uso ni historia lo respalda.
+  - RF-036 (fila 37): ningún caso de uso ni historia lo respalda.
