@@ -1,0 +1,34 @@
+@startuml contexto
+' Diagrama de contexto del sistema de información para la gestión de obras (SRS, 2.1)
+title Contexto del sistema de información para la gestión de obras
+left to right direction
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam rectangle {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+}
+skinparam actor {
+  BackgroundColor #FFFFFF
+  BorderColor #333333
+}
+actor "Residente de obra" as RES
+actor "Administradora\nde proyectos" as ADM
+actor "Gerente de obra" as GO
+actor "Gerente general" as GG
+actor "Contador" as CON
+rectangle "Sistema de información\npara la gestión de obras" as SIS #F2F2F2
+rectangle "Celular del residente\n(cámara y almacenamiento local)" as CEL
+rectangle "Hojas de Excel de la empresa\n(en paralelo durante la transición)" as XLS
+RES --> SIS : solicitudes, compras urgentes,\navance, recepciones y devoluciones
+SIS --> RES : estado de sus registros\ny saldo de los rubros
+ADM --> SIS : decisiones, órdenes de compra,\nverificación y periodicidad de corte
+SIS --> ADM : solicitudes por decidir,\nalertas y consolidado
+GO --> SIS : visto bueno, decisiones,\npresupuesto y devolución de reportes
+SIS --> GO : saldo, ejecución, alertas\ny avance de la obra
+GG --> SIS : decisiones sobre excesos\ny ajustes de presupuesto
+SIS --> GG : solicitudes por decidir,\nejecución y avance
+SIS --> CON : compras verificadas\ny sus soportes
+CEL --> SIS : fotografías y reportes\nguardados sin conexión
+SIS --> XLS : presupuesto, consolidado\ny reportes (.xlsx)
+@enduml

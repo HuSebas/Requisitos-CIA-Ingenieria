@@ -1,0 +1,59 @@
+id,tipo,prioridad,estado,fuente,necesidad,meta,historia,caso_uso,pantalla,regla,ac,verificacion
+RF-001,RF,Must,propuesto,E-01; E-02,NI-01,G2.1,,CU-01,P-03; P-04,,AC-01,prueba
+RF-002,RF,Must,propuesto,E-01; E-02,NI-01,G2.1,,CU-01,P-03; P-04,,AC-02; AC-03,prueba
+RF-003,RF,Must,propuesto,E-02,NI-03,G2.2,,CU-01,P-03; P-04,RN-02; RN-03; RN-04; RN-05; RN-06; RN-19,AC-04; AC-05; AC-06; AC-07; AC-18,prueba
+RF-004,RF,Should,propuesto,E-02,NI-03,G2.2,,CU-01,P-03; P-04,,AC-08,prueba
+RF-005,RF,Must,propuesto,E-02,NI-02,G2.3,HU-01,CU-02; CU-05,P-03; P-05; P-06; P-08; P-10,RN-01,AC-09; AC-10,prueba
+RF-006,RF,Must,propuesto,E-02,NI-02; NI-07,G2.3,HU-01,CU-02,P-05; P-06,RN-01,AC-11,prueba
+RF-007,RF,Must,propuesto,E-02,NI-03,G2.5,,CU-02,P-05; P-06,,AC-12; AC-20,prueba
+RF-008,RF,Must,propuesto,E-02,NI-06,G1.2,,CU-02,P-05; P-06,RN-01; RN-19,AC-12; AC-14,prueba
+RF-009,RF,Must,propuesto,E-02,NI-03,G2.4; G2.5,,CU-02,P-05; P-06,RN-10,AC-16,prueba
+RF-010,RF,Should,propuesto,E-02,NI-03,G2.2,,CU-02,P-05; P-06,,AC-52,prueba
+RF-011,RF,Must,propuesto,E-01; E-02,NI-04,G2.5,,CU-03; CU-13,P-04; P-07; P-15,,AC-23,prueba
+RF-012,RF,Must,propuesto,E-02,NI-05,G2.6,HU-03,CU-03,P-04; P-07,RN-07; RN-08,AC-21; AC-22; AC-24,prueba
+RF-013,RF,Must,propuesto,E-02,NI-05,G2.6,HU-03,CU-03,P-04; P-07,RN-08,AC-23,prueba
+RF-014,RF,Must,propuesto,E-02,NI-05,G2.6,HU-03,CU-04,P-05; P-08,RN-07,AC-25,prueba
+RF-015,RF,Could,propuesto,E-02,NI-05,G2.6,,CU-04,P-05; P-08,RN-09,AC-53,prueba
+RF-016,RF,Should,propuesto,E-01,NI-04,G2.8,,CU-15,P-17,,AC-47,prueba
+RF-017,RF,Must,propuesto,E-01,NI-06,G1.1,,CU-06,P-12,,AC-37,prueba
+RF-018,RF,Should,propuesto,E-01,NI-12,G5.4,,CU-16,P-12,,AC-51,prueba
+RF-019,RF,Must,propuesto,E-01; E-02,NI-06,G1.3,,CU-07; CU-05,P-03; P-06; P-08; P-10,RN-01; RN-16,AC-35,prueba
+RF-020,RF,Should,propuesto,E-01; E-02,NI-07,G1.4,,CU-08,P-02,RN-11,AC-27,prueba
+RF-021,RF,Should,propuesto,E-01,NI-11,G1.5,,CU-17,P-19,,AC-49,prueba
+RF-022,RF,Could,propuesto,E-01,NI-11,,,CU-17,P-19,,AC-49,prueba
+RF-023,RF,Must,propuesto,D-08; E-01,NI-08,G3.1,HU-02,CU-09,P-04; P-09,RN-13; RN-14,AC-30; AC-33,prueba
+RF-024,RF,Must,propuesto,E-02,NI-08,G3.2,HU-02,CU-09,P-04; P-09,RN-18,AC-31,prueba
+RF-025,RF,Must,propuesto,E-02,NI-08,G3.2,HU-02,CU-09,P-04; P-09,RN-18,AC-32,prueba
+RF-026,RF,Should,propuesto,E-02,NI-09,G3.3,,CU-12,P-13,,AC-48,prueba
+RF-027,RF,Must,propuesto,E-01; E-02,NI-09,G3,,CU-10,P-11,,AC-36,prueba
+RF-028,RF,Should,propuesto,E-02,NI-09,G3.4,,CU-11,P-11,RN-14,AC-34,prueba
+RF-029,RF,Should,propuesto,E-02,NI-09,G3.4,,CU-11; CU-17,P-11; P-19,,AC-34,prueba
+RF-030,RF,Must,propuesto,E-01; E-02,NI-10,G4.1,,CU-13,P-15,RN-15,AC-38,prueba
+RF-031,RF,Should,propuesto,E-02,NI-10,G4.2,,CU-13,P-15,RN-15,AC-39,prueba
+RF-032,RF,Should,propuesto,E-01,NI-10,G4.3,,CU-14,P-16,,AC-50,prueba
+RF-033,RF,Should,propuesto,E-01,NI-10,G2.7,,CU-14,P-16,RN-12,AC-28,prueba
+RF-034,RF,Must,propuesto,E-01; E-02,NI-12,G5.1,,,,RN-17,AC-41,prueba
+RF-035,RF,Must,propuesto,E-01; E-02,NI-12,G5.1,,,,RN-17,AC-42,inspeccion
+RF-036,RF,Must,propuesto,E-02,NI-12,G5.2,,,P-01,RN-16,AC-43,demostracion
+RF-037,RF,Must,propuesto,D-09; E-02,NI-12,G5.2; G5.3,,CU-07,P-10,RN-16,AC-29,prueba
+RF-038,RF,Should,propuesto,D-10,NI-01,G2.1,,CU-19,P-04,RN-17,AC-19,prueba
+RF-039,RF,Should,propuesto,D-10,NI-05,G2.6,HU-03,CU-04,P-05; P-08,,AC-26,prueba
+RF-040,RF,Should,propuesto,D-10; E-03,NI-05,G2.6,HU-03,CU-03,P-04; P-07,,AC-52,prueba
+RF-041,RF,Should,propuesto,D-10,NI-05,G2.6,,CU-04,P-05; P-08,,AC-52,prueba
+RF-042,RF,Must,propuesto,E-02,NI-03,G2.2; G2.4,,CU-02,P-05; P-06,RN-03; RN-04; RN-19,AC-13; AC-14; AC-15,prueba
+RF-043,RF,Must,propuesto,E-02,NI-03; NI-07,G2.2,,CU-02,P-05; P-06,RN-02; RN-04; RN-05,AC-17,prueba
+RF-044,RF,Must,propuesto,D-10,NI-10,G4.1,,CU-20,P-14,RN-22,AC-40,prueba
+RF-045,RF,Should,propuesto,E-01,NI-04,G2.8,,CU-18,P-18,,AC-47,prueba
+RNF-001,RNF,Should,propuesto,E-01,NI-13,,,,,,AC-54,prueba
+RNF-002,RNF,Should,propuesto,E-01,NI-13,,,,,,AC-55,inspeccion
+RNF-003,RNF,Must,propuesto,D-09; E-02,NI-13,,,,,,AC-44,demostracion
+RNF-004,RNF,Must,propuesto,E-02,NI-08,,,,,,AC-31; AC-32,prueba
+RNF-005,RNF,Should,propuesto,E-02,NI-02,,,,,,AC-56,prueba
+RNF-006,RNF,Must,propuesto,D-09; E-02,NI-12,,,,,,AC-29,prueba
+RNF-007,RNF,Must,propuesto,E-01,NI-12,,,,,,AC-45,inspeccion
+RNF-008,RNF,Must,propuesto,E-01; E-02,NI-12,,,,,,AC-46,prueba
+RNF-009,RNF,Should,propuesto,E-01,NI-12,,,,,,AC-60,analisis
+RNF-010,RNF,Should,propuesto,D-09,NI-11,,,,,,AC-59,demostracion
+RNF-011,RNF,Could,propuesto,E-02,NI-06,,,,,,AC-60,analisis
+RNF-012,RNF,Should,propuesto,D-11,NI-03,,,,,,AC-57,inspeccion
+RNF-013,RNF,Should,propuesto,D-12,NI-13,,,,,,AC-58,inspeccion
